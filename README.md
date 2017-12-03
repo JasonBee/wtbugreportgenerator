@@ -4,7 +4,7 @@
 
 Because *why* manually collect the files needed to file a bug report? 
 
-TO use this script, download wt-data-collector.command to your computer and double click it. If .command files are correctly assigned it shoudl open in Terminal.app. No privileges are required.
+To use this script, download wt-data-collector.command to your computer and double click it. If .command files are correctly assigned it shoudl open in Terminal.app. No privileges are required.
 
 Have you ever posted a bug report only to find it was deleted or locked becuase you missed a file or two? This script automates the data collection for you using state of the art techniques, leaving you with a zip file containing the needed information
 
