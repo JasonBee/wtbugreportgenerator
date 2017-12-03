@@ -18,11 +18,11 @@ Subject line should be formatted as requested in the link above: "[<full_version
 
 ## A: A bunch of things...
 
-1) It creates a folder on tyour desktop with today's date and time.
+1) It creates a folder on your desktop using today's date and time "WT-BUGREPORT-YEAR-MONTH-DAY_HH-MM".
 
 2) It then reads out a number of system attributes useful to the developers (no more screen caps or typing out machine specs) and captures these stats to file. 
 	
-3) It copies files less than 30 minutes old from these locations. Anything with a wildcard ensures only the appropriate game-related files are collected:
+3) It copies files less than 30 minutes old from the following locations. Anything with a wildcard/filemask ensures only the appropriate game-related files are collected:
 
 	"/Users/temp/WarThunderLauncherLogs"
 	
@@ -36,5 +36,5 @@ Subject line should be formatted as requested in the link above: "[<full_version
 	
 4) Once this is done, a finder window is opened to the folder with the collected data. You are asked to review what's been collected. We do this so you can delete any garbage or incorrectly captured files. You can choose to add additional information such screen caps, missed log files, or love notes to the developers.
 
-5) Finally, you are asked to entery Y/N answer, and if Y is chosen the folder is zipped up and the source folder deleted. You will now create a bug report, and attach the zipped file you have created.
+5) Finally, you are asked to enter a Y/N answer, and if Y is chosen the folder is zipped up and the source folder deleted. You will now have to manually create a bug report, and attach the zipped file you have created. Drag and drop is supported on the WT forums so adding the resulting zip file is easy and fast.
 
