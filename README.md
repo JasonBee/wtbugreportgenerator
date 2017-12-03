@@ -16,9 +16,9 @@ Be sure to post bug reports here:
 
 Subject line should be formatted as requested in the link above: "[<full_version_number>]  <Issue>"
 
-Q: What does this script do?
+##Q: What does this script do?
 
-A: A bunch of things..
+##A: A bunch of things...
 
 1) It creates a folder on tyour desktop with today's date and time.
 
@@ -27,9 +27,13 @@ A: A bunch of things..
 3) It copies files less than 30 minutes old from these locations. Anything with a wildcard ensures only the appropriate game-related files are collected:
 
 	"/Users/temp/WarThunderLauncherLogs"
+	
 	"/Users/temp/My Games/WarThunder/_game_logs"
+	
 	"/Users/temp/Library/Logs/DiagnosticReports/aces*"
+	
 	"/Users/temp/Library/Application Support/CrashReporter/aces*"
+	
 	"/Library/Logs/DiagnosticReports/aces*"
 	
 4) Once this is done, a finder window is opened to the folder with the collected data. You are asked to review what's been collected. We do this so you can delete any garbage or incorrectly captured files. You can choose to add additional information such screen caps, missed log files, or love notes to the developers.
