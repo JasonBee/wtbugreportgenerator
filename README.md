@@ -16,9 +16,9 @@ Be sure to post bug reports here:
 
 Subject line should be formatted as requested in the link above: "[<full_version_number>]  <Issue>"
 
-|Q:|What does this script do?|
+Q: What does this script do?
 
-|A:|A bunch of things..|
+A: A bunch of things..
 
 1) It creates a folder on tyour desktop with today's date and time.
 
