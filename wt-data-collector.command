@@ -41,13 +41,15 @@ printf "\nStorage Information\n" >>$bugfiles/$outputfile
 printf "_______________________________________\n" >>$bugfiles/$outputfile
 system_profiler SPStorageDataType >>$bugfiles/$outputfile
 
-cd /Users/temp/WarThunderLauncherLogs
+cd ~/WarThunderLauncherLogs
 for b in $(find * -mmin -30 -type f); do cp $b $bugfiles/$b; done > /dev/null 2>&1
-cd /Users/temp/My\ Games/WarThunder/_game_logs
+cd ~/My\ Games/WarThunder/_game_logs
 for b in $(find * -mmin -30 -type f); do cp $b $bugfiles/$b; done > /dev/null 2>&1
-cd /Users/temp/Library/Logs/DiagnosticReports/
+cd ~/Library/Logs/DiagnosticReports/
 for b in $(find aces* -mmin -30 -type f); do cp $b $bugfiles/$b; done > /dev/null 2>&1
-cd /Users/temp/Library/Application\ Support/CrashReporter/
+cd ~/Library/Application\ Support/CrashReporter/
+for b in $(find aces* -mmin -30 -type f); do cp $b $bugfiles/$b; done > /dev/null 2>&1
+cd /Library/Logs/DiagnosticReports/
 for b in $(find aces* -mmin -30 -type f); do cp $b $bugfiles/$b; done > /dev/null 2>&1
 
 clear
@@ -58,6 +60,7 @@ then
     ls -l $bugfiles
     printf "____________________________________________________\n"
     printf "Add any additional files to the folder such a screen caps, replays, etc"
+    open -a Finder $bugfiles
     read -p "Please review these files carefully, do you want to submit them?: (Y / N)" ans_yn
     case "$ans_yn" in
         [Yy]|[Yy][Ee][Ss]) echo "Zipping the files";;

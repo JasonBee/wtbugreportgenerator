@@ -1,1 +1,34 @@
-# wtbugreportgenerator
+# War Thunder Bug Report Generator
+
+Because why manually collect the files needed to file a bug report? 
+
+Have you ever posted a bug report only to find it was deleted or locked becuase you missed a file or two? This script automates the data collection for you using state of the art techniques, leaving you with a zip file containing the needed information
+
+The basic requirements for the script were pulled from the report guidelines:
+
+https://forum.warthunder.com/index.php?/topic/347718-mac-report-gudelines-important-read-before-posting/
+
+Be sure to post bug reports here:
+
+Subject line should be formatted as requested in the link above: "[<full_version_number>]  <Issue>"
+
+Q: What does this script do?
+
+A: 	A bunch of things..
+
+1) It creates a folder on tyour desktop with today's date and time.
+
+2) It then reads out a number of system attributes useful to the developers (no more screen caps or typing out machine specs) and captures these stats to file. 
+	
+3) It copies files less than 30 minutes old from these locations. Anything with a wildcard ensures only the appropriate game-related files are collected:
+
+	"/Users/temp/WarThunderLauncherLogs"
+	"/Users/temp/My Games/WarThunder/_game_logs"
+	"/Users/temp/Library/Logs/DiagnosticReports/aces*"
+	"/Users/temp/Library/Application Support/CrashReporter/aces*"
+	"/Library/Logs/DiagnosticReports/aces*"
+	
+4) Once this is done, a finder window is opened to the folder with the collected data. You are asked to review what's been collected. We do this so you can delete any garbage or incorrectly captured files. You can choose to add additional information such screen caps, missed log files, or love notes to the developers.
+
+5) Finally, you are asked to entery Y/N answer, and if Y is chosen the folder is zipped up and the source folder deleted. You will now create a bug report, and attach the zipped file you have created.
+
