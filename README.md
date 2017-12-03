@@ -1,6 +1,6 @@
 # War Thunder Bug Report Generator
 
-(https://media.boingboing.net/wp-content/uploads/2015/12/rage-face.jpg)
+![Log collecting](https://media.boingboing.net/wp-content/uploads/2015/12/rage-face.jpg)
 
 Because *why* manually collect the files needed to file a bug report? 
 
