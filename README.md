@@ -8,9 +8,9 @@ To use this script, download wt-data-collector.command to your computer and doub
 
 Have you ever posted a bug report only to find it was deleted or locked becuase you missed a file or two? This script automates the data collection for you using state of the art techniques, leaving you with a zip file containing the needed information
 
-The basic requirements for the script were pulled from the (report guidelines)[https://forum.warthunder.com/index.php?/topic/347718-mac-report-gudelines-important-read-before-posting/].
+The basic requirements for the script were pulled from the (report guidelines.)[https://forum.warthunder.com/index.php?/topic/347718-mac-report-gudelines-important-read-before-posting/]
 
-Be sure to post (bug reports here)[https://forum.warthunder.com/index.php?/forum/569-moderated-bug-reports-mac/]. 
+Be sure to post (bug reports here.)[https://forum.warthunder.com/index.php?/forum/569-moderated-bug-reports-mac/] 
 
 Subject line should be formatted as requested in the link above: "[<full_version_number>]  <Issue>"
 
