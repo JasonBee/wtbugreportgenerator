@@ -1,0 +1,179 @@
+Darwin elitepro.eliteconceptual.ca 17.2.0 Darwin Kernel Version 17.2.0: Fri Sep 29 18:27:05 PDT 2017; root:xnu-4570.20.62~3/RELEASE_X86_64 x86_64
+
+Software Information
+_______________________________________
+System Version = macOS 10.13.1 (17B1003)
+Kernel Version = Darwin 17.2.0
+Boot Volume = HD
+Boot Mode = Normal
+Secure Virtual Memory = Enabled
+System Integrity Protection = Enabled
+Time since boot = 11 days 21:29
+
+Hardware Information
+_______________________________________
+Model Name = Mac Pro
+Model Identifier = MacPro5,1
+Processor Name = Quad-Core Intel Xeon
+Processor Speed = 2.93 GHz
+L3 Cache (per Processor) = 8 MB
+Memory = 12 GB
+Processor Interconnect Speed = 6.4 GT/s
+Boot ROM Version = MP51.0084.B00
+SMC Version (system) = 1.39f5
+SMC Version (processor tray) = 1.39f5
+Hardware UUID = C8C863D2-F442-506B-8D73-4364205EDECE
+
+Graphics Information
+_______________________________________
+Chipset Model = ATI Radeon HD 5770
+Type = GPU
+Bus = PCIe
+Slot = Slot-1
+PCIe Lane Width = x16
+VRAM (Total) = 1 GB
+Vendor = AMD (0x1002)
+Device ID = 0x68b8
+Revision ID = 0x0000
+ROM Revision = 113-C0160C-155
+VBIOS Version = 113-C01601-103
+EFI Driver Version = 01.00.436
+Resolution = 1920 x 1080 @ 60 Hz
+Framebuffer Depth = 24-Bit Color (ARGB8888)
+
+Storage Information
+_______________________________________
+Storage:
+
+    DroboPro:
+
+      Available: 7.66 TB (7,659,516,346,368 bytes)
+      Capacity: 17.59 TB (17,591,842,062,336 bytes)
+      Mount Point: /Volumes/DroboPro
+      File System: Journaled HFS+
+      Writable: Yes
+      Ignore Ownership: No
+      BSD Name: disk0s2
+      Volume UUID: F68EB271-B578-3626-AADB-C4AFA9EE91F0
+      Physical Drive:
+          Device Name: DroboPro
+          Media Name: DROBO DroboPro Media
+          Protocol: USB
+          Internal: No
+          Partition Map Type: GPT (GUID Partition Table)
+
+    Documents:
+
+      Available: 304.55 GB (304,546,201,600 bytes)
+      Capacity: 3 TB (3,000,249,008,128 bytes)
+      Mount Point: /Volumes/Documents
+      File System: Journaled HFS+
+      Writable: Yes
+      Ignore Ownership: No
+      BSD Name: disk2s2
+      Volume UUID: 67A011EC-A259-3051-A5FE-F4A28FC5F631
+      Physical Drive:
+          Device Name: ST3000DM001-1CH166
+          Media Name: ST3000DM001-1CH166 Media
+          Medium Type: Rotational
+          Protocol: SATA
+          Internal: Yes
+          Partition Map Type: GPT (GUID Partition Table)
+          S.M.A.R.T. Status: Verified
+
+    HD:
+
+      Available: 1.45 TB (1,451,180,883,968 bytes)
+      Capacity: 2.03 TB (2,033,708,302,336 bytes)
+      Mount Point: /
+      File System: Journaled HFS+
+      Writable: Yes
+      Ignore Ownership: No
+      BSD Name: disk4
+      Volume UUID: 716D6D6E-93BA-330B-8391-F9A42A17A74C
+      Logical Volume:
+          Revertible: No
+          Encrypted: No
+          LV UUID: 634E6E4A-94D8-46DB-BC6D-329A75CDBFB9
+      Logical Volume Group:
+          Name: HD
+          Size: 2.04 TB (2,040,213,540,864 bytes)
+          Free Space: 61 KB (61,440 bytes)
+          LVG UUID: C3C2A0B8-F94F-4650-9943-8BE65F0F0ACB
+      Physical Volumes:
+        disk3s2:
+          Device Name: OCZ-VERTEX3 MI
+          Media Name: OCZ-VERTEX3 MI Media
+          Size: 239.71 GB (239,713,435,648 bytes)
+          Medium Type: SSD
+          Protocol: SATA
+          Internal: Yes
+          Partition Map Type: GPT (GUID Partition Table)
+          Status: Online
+          S.M.A.R.T. Status: Verified
+          PV UUID: D2868630-3DAC-4750-946C-443C37C70431
+        disk1s2:
+          Device Name: WDC WD2002FAEX-007BA0
+          Media Name: WDC WD2002FAEX-007BA0 Media
+          Size: 1.8 TB (1,800,500,105,216 bytes)
+          Medium Type: Rotational
+          Protocol: SATA
+          Internal: Yes
+          Partition Map Type: GPT (GUID Partition Table)
+          Status: Online
+          S.M.A.R.T. Status: Verified
+          PV UUID: 67C36CF5-EBEC-4E75-ACD2-A14F8A5EE9EC
+
+    Compres:
+
+      Available: 467.06 GB (467,062,824,960 bytes)
+      Capacity: 2 TB (2,000,054,960,128 bytes)
+      Mount Point: /Volumes/Compres
+      File System: Journaled HFS+
+      Writable: Yes
+      Ignore Ownership: Yes
+      BSD Name: disk5s2
+      Volume UUID: 76687DE3-FECB-3AA9-98A1-B835AEE42C3F
+      Physical Drive:
+          Device Name: WDC WD20EARS-00MVWB0
+          Media Name: WDC WD20EARS-00MVWB0 Media
+          Medium Type: Rotational
+          Protocol: SATA
+          Internal: Yes
+          Partition Map Type: GPT (GUID Partition Table)
+          S.M.A.R.T. Status: Verified
+
+    Little Snitch 4.0.4:
+
+      Available: 57.1 MB (57,110,528 bytes)
+      Capacity: 134.2 MB (134,176,768 bytes)
+      Mount Point: /Volumes/Little Snitch 4.0.4
+      File System: HFS+
+      Writable: No
+      Ignore Ownership: Yes
+      BSD Name: disk6s1
+      Volume UUID: 00000000-0000-0000-0000-000000000000
+      Physical Drive:
+          Device Name: Disk Image
+          Media Name: Apple UDIF read-only compressed (zlib) Media
+          Protocol: Disk Image
+          Internal: No
+          Partition Map Type: GPT (GUID Partition Table)
+
+    GNS3 2.1.0:
+
+      Available: 19.1 MB (19,054,592 bytes)
+      Capacity: 152 MB (152,002,560 bytes)
+      Mount Point: /Volumes/GNS3 2.1.0
+      File System: HFS+
+      Writable: No
+      Ignore Ownership: Yes
+      BSD Name: disk7s1
+      Volume UUID: 7E4E1694-6FBE-3EFE-B448-B021C719B28C
+      Physical Drive:
+          Device Name: Disk Image
+          Media Name: Apple UDIF read-only compressed (zlib) Media
+          Protocol: Disk Image
+          Internal: No
+          Partition Map Type: GPT (GUID Partition Table)
+
