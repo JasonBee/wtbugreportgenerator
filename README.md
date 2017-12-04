@@ -4,15 +4,15 @@
 
 Because *why* manually collect the files needed to file a bug report? 
 
-To use this script, download wt-data-collector.command to your computer and double click it. If .command files are correctly assigned it shoudl open in Terminal.app. No privileges are required.
+To use this script, download wt-data-collector.command to your computer and double click it. If .command files are correctly assigned it should open in Terminal.app. No privileges are required.
 
-Have you ever posted a bug report only to find it was deleted or locked becuase you missed a file or two? This script automates the data collection for you using state of the art techniques, leaving you with a zip file containing the needed information
+Have you ever posted a bug report only to find it was deleted or locked because you missed a file or two? This script automates the data collection for you using state of the art techniques, leaving you with a zip file containing the needed information
 
 The basic requirements for the script were pulled from the (report guidelines.)[https://forum.warthunder.com/index.php?/topic/347718-mac-report-gudelines-important-read-before-posting/]
 
 Be sure to post (bug reports here.)[https://forum.warthunder.com/index.php?/forum/569-moderated-bug-reports-mac/] 
 
-Subject line should be formatted as requested in the link above: "[<full_version_number>]  <Issue>"
+Subject line should be formatted as requested in the link above: "[<full_version_number>]  <Issue>"
 
 ## Q: What does this script do?
 
@@ -22,7 +22,7 @@ Subject line should be formatted as requested in the link above: "[<full_version
 
 2) It then reads out a number of system attributes useful to the developers (no more screen caps or typing out machine specs) and captures these stats to file. 
 	
-3) It copies files less than 30 minutes old from the following locations. Anything with a wildcard/filemask ensures only the appropriate game-related files are collected:
+3) It copies files less than 30 minutes old from the following locations. Anything with a wildcard/file-mask ensures only the appropriate game-related files are collected:
 
 	"/Users/temp/WarThunderLauncherLogs"
 	
