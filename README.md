@@ -26,13 +26,13 @@ Subject line should be formatted as requested in the link above: "[<full_version
 	
 3) It copies files less than 30 minutes old from the following locations. Anything with a wildcard/file-mask ensures only the appropriate game-related files are collected:
 
-	"/Users/temp/WarThunderLauncherLogs"
+	"~/WarThunderLauncherLogs"
 	
-	"/Users/temp/My Games/WarThunder/_game_logs"
+	"~/My Games/WarThunder/_game_logs"
 	
-	"/Users/temp/Library/Logs/DiagnosticReports/aces*"
+	"~/Library/Logs/DiagnosticReports/aces*"
 	
-	"/Users/temp/Library/Application Support/CrashReporter/aces*"
+	"~/Library/Application Support/CrashReporter/aces*"
 	
 	"/Library/Logs/DiagnosticReports/aces*"
 	
