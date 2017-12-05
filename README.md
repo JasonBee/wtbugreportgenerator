@@ -1,16 +1,20 @@
-# War Thunder Bug Report Generator
+# War Thunder Bug Report Generator (macOS)
 
-## WT Gamer: But I swore I posted a valid bug report!
+## WT Mac Gamer: "But I swore I posted a valid bug report!"
 
 ![Log collecting](https://media.boingboing.net/wp-content/uploads/2015/12/rage-face.jpg)
 
 Because *why* manually collect the files needed to file a bug report? 
 
-Have you ever posted a bug report only to find it was deleted or locked because you missed a file or two? This script automates the data collection for you using state of the art techniques, leaving you with a zip file containing the needed information. Never again will you post a bug report only to find it deleted a few days later because you failed to properly include the latest .clog files. Bad Gamer!
+Have you ever posted a bug report only to find it was deleted or locked because you missed a file or two? We all have lives, but the game devs need specific info in order to find a software defect root cause.
 
-To use this script, download wt-data-collector.command to your computer and double click it. If .command files are correctly assigned it should open in Terminal.app. No privileges are required. Nothing is changed. Only a new folder and a zip file are created.
+This script automates the data collection for you using "state of the art techniques", leaving you with a zip file containing the needed information. Never again will you post a bug report only to find it deleted a few days later because you failed to properly include the latest .clog files. 
 
-The basic requirements for the script were pulled from the (report guidelines.)[https://forum.warthunder.com/index.php?/topic/347718-mac-report-gudelines-important-read-before-posting/]
+Bad Gamer --> Good Gamer!
+
+To use this script, download wt-data-collector.command to your computer and double click it. If .command files are correctly assigned it should open in Terminal.app. No privileges are required. Nothing is changed. Only a new desktop folder and a zip file are created from that folder.
+
+The basic information requirements for the script were pulled from the (report guidelines.)[https://forum.warthunder.com/index.php?/topic/347718-mac-report-gudelines-important-read-before-posting/]
 
 Be sure to post (bug reports here.)[https://forum.warthunder.com/index.php?/forum/569-moderated-bug-reports-mac/] 
 
