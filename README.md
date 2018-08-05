@@ -1,6 +1,5 @@
 # War Thunder Bug Report Generator (macOS)
 
-## WT Mac Gamer: "But I swore I posted a valid bug report!"
 
 ![Log collecting](https://media.boingboing.net/wp-content/uploads/2015/12/rage-face.jpg)
 
