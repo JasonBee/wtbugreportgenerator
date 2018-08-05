@@ -1,8 +1,5 @@
 # War Thunder Bug Report Generator (macOS)
 
-
-![Log collecting](https://media.boingboing.net/wp-content/uploads/2015/12/rage-face.jpg)
-
 Because *why* manually collect the files needed to file a bug report? 
 
 Have you ever posted a bug report only to find it was deleted or locked because you missed a file or two? We all have lives, but the game devs need specific info in order to find a software defect root cause.
@@ -21,7 +18,7 @@ Subject line should be formatted as requested in the link above: "[<full_version
 
 ## Q: What does this script do?
 
-## A: A bunch of things...
+## A: A bunch of things...but in the open
 
 1) It creates a folder on your desktop using today's date and time "WT-BUGREPORT-YEAR-MONTH-DAY_HH-MM".
 
