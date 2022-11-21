@@ -1,8 +1,8 @@
 # War Thunder Bug Report Generator (macOS)
 
-Because *why* manually collect the files needed to file a bug report? 
+This script will collect the files needed to file a bug report.
 
-Have you ever posted a bug report only to find it was deleted or locked because you missed a file or two? We all have lives, but the game devs need specific info in order to find a software defect root cause.
+Have you ever posted a bug report only to find it was deleted or locked because you missed a file or two? 
 
 This script automates the data collection for you, leaving you with a zip file containing the needed information. Never again will you post a bug report only to find it deleted a few days later because you failed to properly include the latest .clog files. 
 
@@ -18,7 +18,7 @@ Subject line should be formatted as requested in the link above: "[<full_version
 
 ## Q: What does this script do?
 
-## A: A bunch of things...but in the open
+## A: As follows.
 
 1) It creates a folder on your desktop using today's date and time "WT-BUGREPORT-YEAR-MONTH-DAY_HH-MM".
 
