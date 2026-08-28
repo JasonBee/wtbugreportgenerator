@@ -1,98 +1,124 @@
 #!/usr/bin/env bash
+#
+# War Thunder bug-report collector for macOS.
+# Gathers system info and recent game/crash logs, then zips them for submission.
 
-OUTPUT_FILE="systemInfo.txt"
-FOLDER_NAME="WT-BUGREPORT"
-DATE=$(date '+%Y-%m-%d_%H-%M')
-BUG_FILES="$HOME/Desktop/${FOLDER_NAME}-${DATE}"
-OUT_PATH="$BUG_FILES/$OUTPUT_FILE"
+set -euo pipefail
 
-if [[ ! -d "$BUG_FILES" ]]; then
-    mkdir -p "$BUG_FILES"
-else
-    printf "You've already created a report recently.\n"
-    exit 1
-fi
+# ---- Configuration ---------------------------------------------------------
 
-# Use block redirection to write system information to file efficiently
-{
-    uname -a
-    
-    printf "\nSoftware Information\n_______________________________________\n"
-    # Cache system_profiler output to avoid slow, repeated calls
-    SW_INFO=$(system_profiler SPSoftwareDataType)
-    for a in "System Version" "Kernel Version" "Boot Volume" "Boot Mode" "Secure Virtual Memory" "System Integrity Protection" "Time since boot"; do
-        b=$(echo "$SW_INFO" | grep "$a" | awk -F': ' '{print $2}' | xargs)
-        [[ -n "$b" ]] && printf "%s = %s\n" "$a" "$b"
-    done
+readonly OUTPUT_FILE="systemInfo.txt"
+readonly FOLDER_NAME="WT-BUGREPORT"
+readonly LOG_AGE_MIN=30          # collect logs modified within this many minutes
+readonly DATE="$(date '+%Y-%m-%d_%H-%M')"
+readonly REPORT_DIR="${HOME}/Desktop/${FOLDER_NAME}-${DATE}"
+readonly OUT_PATH="${REPORT_DIR}/${OUTPUT_FILE}"
 
-    printf "\nHardware Information\n_______________________________________\n"
-    HW_INFO=$(system_profiler SPHardwareDataType)
-    for a in "Model Name" "Model Identifier" "Processor Name" "Processor Speed" "L3 Cache (per Processor)" "Memory" "Processor Interconnect Speed" "Boot ROM Version" "SMC Version (system)" "SMC Version (processor tray)" "Hardware UUID"; do
-        b=$(echo "$HW_INFO" | grep "$a" | awk -F': ' '{print $2}' | xargs)
-        [[ -n "$b" ]] && printf "%s = %s\n" "$a" "$b"
-    done
-
-    printf "\nGraphics Information\n_______________________________________\n"
-    GFX_INFO=$(system_profiler SPDisplaysDataType)
-    for a in "Chipset Model" "Type" "Bus" "Slot" "PCIe Lane Width" "VRAM (Total)" "Vendor" "Device ID" "Revision ID" "ROM Revision" "VBIOS Version" "EFI Driver Version" "Resolution" "Framebuffer Depth"; do
-        b=$(echo "$GFX_INFO" | grep "$a" | awk -F': ' '{print $2}' | xargs)
-        [[ -n "$b" ]] && printf "%s = %s\n" "$a" "$b"
-    done
-
-    printf "\nStorage Information\n_______________________________________\n"
-    system_profiler SPStorageDataType
-} > "$OUT_PATH"
-
-# Map directories to their target file patterns for safe iteration
-LOG_TARGETS=(
-    "$HOME/WarThunderLauncherLogs:*"
-    "$HOME/My Games/WarThunder/_game_logs:*.clog"
-    "$HOME/Library/Logs/DiagnosticReports:aces*"
-    "$HOME/Library/Application Support/CrashReporter:aces*"
+# Directory:glob pairs for logs to collect.
+readonly LOG_TARGETS=(
+    "${HOME}/WarThunderLauncherLogs:*"
+    "${HOME}/My Games/WarThunder/_game_logs:*.clog"
+    "${HOME}/Library/Logs/DiagnosticReports:aces*"
+    "${HOME}/Library/Application Support/CrashReporter:aces*"
     "/Library/Logs/DiagnosticReports:aces*"
 )
 
-for target in "${LOG_TARGETS[@]}"; do
-    DIR="${target%%:*}"
-    PATTERN="${target##*:}"
-    
-    if [[ -d "$DIR" ]]; then
-        # Use find -exec to handle files safely, avoiding subshell word-splitting
-        find "$DIR" -maxdepth 1 -type f -name "$PATTERN" -mmin -30 -exec cp -p {} "$BUG_FILES/" \; 2>/dev/null
-    fi
+# ---- Helpers ---------------------------------------------------------------
+
+die() { printf 'Error: %s\n' "$*" >&2; exit 1; }
+
+# Print "Label = value" for each requested field found in profiler output.
+# $1 = profiler text, remaining args = field labels.
+extract_fields() {
+    local info="$1"; shift
+    local field value
+    for field in "$@"; do
+        value="$(grep -F "$field" <<<"$info" | awk -F': ' '{print $2}' | xargs)"
+        [[ -n "$value" ]] && printf '%s = %s\n' "$field" "$value"
+    done
+}
+
+# ---- Preconditions ---------------------------------------------------------
+
+[[ "$(uname -s)" == "Darwin" ]] || die "This script only runs on macOS."
+
+for cmd in system_profiler zip; do
+    command -v "$cmd" >/dev/null 2>&1 || die "Required command not found: $cmd"
 done
 
+if [[ -d "$REPORT_DIR" ]]; then
+    die "A report for this timestamp already exists: $REPORT_DIR"
+fi
+mkdir -p "$REPORT_DIR"
+
+# ---- System information ----------------------------------------------------
+
+{
+    uname -a
+
+    printf '\nSoftware Information\n%s\n' "$(printf '_%.0s' {1..40})"
+    sw_info="$(system_profiler SPSoftwareDataType)"
+    extract_fields "$sw_info" \
+        "System Version" "Kernel Version" "Boot Volume" "Boot Mode" \
+        "Secure Virtual Memory" "System Integrity Protection" "Time since boot"
+
+    printf '\nHardware Information\n%s\n' "$(printf '_%.0s' {1..40})"
+    hw_info="$(system_profiler SPHardwareDataType)"
+    extract_fields "$hw_info" \
+        "Model Name" "Model Identifier" "Chip" "Processor Name" "Processor Speed" \
+        "Total Number of Cores" "L3 Cache (per Processor)" "Memory" \
+        "Processor Interconnect Speed" "Boot ROM Version" "SMC Version (system)" \
+        "SMC Version (processor tray)" "Hardware UUID"
+
+    printf '\nGraphics Information\n%s\n' "$(printf '_%.0s' {1..40})"
+    gfx_info="$(system_profiler SPDisplaysDataType)"
+    extract_fields "$gfx_info" \
+        "Chipset Model" "Type" "Bus" "Slot" "PCIe Lane Width" "VRAM (Total)" \
+        "Vendor" "Device ID" "Revision ID" "ROM Revision" "VBIOS Version" \
+        "EFI Driver Version" "Resolution" "Framebuffer Depth"
+
+    printf '\nStorage Information\n%s\n' "$(printf '_%.0s' {1..40})"
+    system_profiler SPStorageDataType
+} > "$OUT_PATH"
+
+# ---- Collect logs ----------------------------------------------------------
+
+for target in "${LOG_TARGETS[@]}"; do
+    dir="${target%%:*}"
+    pattern="${target##*:}"
+    [[ -d "$dir" ]] || continue
+    find "$dir" -maxdepth 1 -type f -name "$pattern" -mmin "-${LOG_AGE_MIN}" \
+        -exec cp -p {} "$REPORT_DIR/" \; 2>/dev/null || true
+done
+
+# ---- Review ----------------------------------------------------------------
+
 clear
-printf "These files will be zipped for you to submit\n"
-printf "____________________________________________________\n"
-ls -l "$BUG_FILES"
-printf "____________________________________________________\n"
-printf "Add any additional files to the folder such as screen caps, replays, etc.\n"
+printf 'These files will be zipped for you to submit\n'
+printf '%s\n' "$(printf '_%.0s' {1..52})"
+ls -l "$REPORT_DIR"
+printf '%s\n' "$(printf '_%.0s' {1..52})"
+printf 'Add any additional files to the folder such as screen caps, replays, etc.\n'
 
-open -a Finder "$BUG_FILES"
-read -p "Please review these files carefully, do you want to submit them? (Y / N): " ans_yn
+command -v open >/dev/null 2>&1 && open -a Finder "$REPORT_DIR"
 
-case "$ans_yn" in
-    [Yy]|[Yy][Ee][Ss]) 
-        echo "Zipping the files..."
-        ;;
-    *) 
-        echo "Exiting. Files preserved at $BUG_FILES"
-        exit 3
-        ;;
+read -r -p 'Please review these files carefully, do you want to submit them? (Y/N): ' ans
+case "$ans" in
+    [Yy]|[Yy][Ee][Ss]) : ;;
+    *) printf 'Exiting. Files preserved at %s\n' "$REPORT_DIR"; exit 0 ;;
 esac
 
+# ---- Zip --------------------------------------------------------------------
+
 clear
-# Ensure zip succeeds before deleting the source directory
-if zip -r -j -q "${BUG_FILES}.zip" "$BUG_FILES"; then
-    rm -rf "$BUG_FILES"
+if zip -r -j -q "${REPORT_DIR}.zip" "$REPORT_DIR"; then
+    rm -rf "$REPORT_DIR"
     clear
-    printf "The needed files are zipped for you to submit.\n"
-    printf "Please attach the file below to your Bug Report Submission:\n"
-    printf "____________________________________________________\n"
-    echo "${BUG_FILES}.zip"
-    printf "____________________________________________________\n"
+    printf 'The needed files are zipped for you to submit.\n'
+    printf 'Please attach the file below to your Bug Report Submission:\n'
+    printf '%s\n' "$(printf '_%.0s' {1..52})"
+    printf '%s\n' "${REPORT_DIR}.zip"
+    printf '%s\n' "$(printf '_%.0s' {1..52})"
 else
-    printf "Error: Failed to create zip archive.\n"
-    exit 1
+    die "Failed to create zip archive."
 fi
